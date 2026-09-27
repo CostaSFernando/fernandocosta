@@ -164,9 +164,67 @@
   .contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;}
 
   footer{padding:32px 24px;text-align:center;color:var(--text-faint);font-size:13px;border-top:1px solid var(--border);}
+
+  /* SCROLL PROGRESS BAR */
+  #progress{
+    position:fixed;top:0;left:0;height:3px;width:0%;
+    background:linear-gradient(90deg, var(--accent), var(--accent-strong));
+    z-index:100;transition:width .1s ease-out;
+  }
+
+  /* SCROLL REVEAL */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.is-visible{opacity:1;transform:translateY(0);}
+
+  /* NAV underline */
+  .nav-links a{position:relative;padding-bottom:4px;}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:2px;
+    background:var(--accent);transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+
+  /* CARD HOVER LIFT */
+  .fact-card,.skill-group,.project-card{transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;}
+  .fact-card:hover,.skill-group:hover,.project-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 28px -14px rgba(0,0,0,.35);
+    border-color:var(--accent);
+  }
+
+  /* TAG HOVER */
+  .tag{transition:transform .15s ease, background .15s ease;}
+  .tag:hover{transform:translateY(-2px) scale(1.04);background:var(--accent);color:var(--bg);}
+
+  /* BUTTON MICRO-INTERACTION */
+  .btn:hover{transform:translateY(-2px);}
+  .btn:active{transform:translateY(0) scale(.97);}
+
+  /* TIMELINE PULSE */
+  .job::before{animation:pulse-dot 2.4s ease-in-out infinite;}
+  @keyframes pulse-dot{
+    0%,100%{box-shadow:0 0 0 4px var(--bg), 0 0 0 4px var(--bg);}
+    50%{box-shadow:0 0 0 4px var(--bg), 0 0 0 9px var(--accent-soft);}
+  }
+
+  /* HERO CURSOR GLOW */
+  .hero-glow{
+    position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(360px 360px at var(--mx,50%) var(--my,20%), var(--accent-soft), transparent 70%);
+    transition:background .15s ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1!important;transform:none!important;transition:none!important;}
+    .job::before{animation:none!important;}
+    .btn,.fact-card,.skill-group,.project-card,.tag{transition:none!important;}
+  }
 </style>
 </head>
 <body>
+
+<div id="progress"></div>
 
 <header>
   <nav>
@@ -182,7 +240,8 @@
   </nav>
 </header>
 
-<section class="hero">
+<section class="hero" id="hero">
+  <div class="hero-glow"></div>
   <div class="wrap">
     <div class="kicker">Gold Coast, Queensland, Australia</div>
     <h1>Fernando Costa<br>Software Developer, <span class="accent">Full Stack</span></h1>
@@ -196,8 +255,8 @@
       <a class="btn btn-ghost" href="#experience">See experience ↓</a>
     </div>
     <div class="stat-row">
-      <div class="stat"><b>6+</b><span>Years of experience</span></div>
-      <div class="stat"><b>4</b><span>Companies, incl. Accenture</span></div>
+      <div class="stat"><b data-count="6" data-suffix="+">0</b><span>Years of experience</span></div>
+      <div class="stat"><b data-count="4" data-suffix="">0</b><span>Companies, incl. Accenture</span></div>
       <div class="stat"><b>Angular · Node.js · Java</b><span>Core stack</span></div>
     </div>
   </div>
@@ -216,9 +275,9 @@
         to strengthen my English, while bringing 6+ years of hands-on technical expertise to the table.
       </p>
       <div>
-        <div class="fact-card"><b>Location</b><div class="val">Gold Coast, QLD, Australia</div></div>
-        <div class="fact-card"><b>English</b><div class="val">Intermediate — actively studying, comfortable with technical written English</div></div>
-        <div class="fact-card"><b>Open to</b><div class="val">New opportunities in Australia — full-time, contract, or trial</div></div>
+        <div class="fact-card reveal"><b>Location</b><div class="val">Gold Coast, QLD, Australia</div></div>
+        <div class="fact-card reveal"><b>English</b><div class="val">Intermediate — actively studying, comfortable with technical written English</div></div>
+        <div class="fact-card reveal"><b>Open to</b><div class="val">New opportunities in Australia — full-time, contract, or trial</div></div>
       </div>
     </div>
   </div>
@@ -229,21 +288,21 @@
     <div class="eyebrow">Skills</div>
     <h2>What I work with</h2>
     <div class="skills-groups">
-      <div class="skill-group">
+      <div class="skill-group reveal">
         <h3>Front End</h3>
         <div class="tag-list">
           <span class="tag">JavaScript</span><span class="tag">TypeScript</span>
           <span class="tag">Angular</span><span class="tag">React (fundamentals)</span>
         </div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group reveal">
         <h3>Back End</h3>
         <div class="tag-list">
           <span class="tag">Node.js</span><span class="tag">NestJS</span><span class="tag">Java</span>
           <span class="tag">Spring Boot</span><span class="tag">REST APIs</span>
         </div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group reveal">
         <h3>Data & Tools</h3>
         <div class="tag-list">
           <span class="tag">MySQL</span><span class="tag">PostgreSQL</span>
@@ -252,7 +311,7 @@
           <span class="tag">Docker</span><span class="tag">AWS</span>
         </div>
       </div>
-      <div class="skill-group">
+      <div class="skill-group reveal">
         <h3>Other</h3>
         <div class="tag-list">
           <span class="tag">WordPress</span><span class="tag">PHP</span>
@@ -269,7 +328,7 @@
     <h2>Where I've worked</h2>
     <div class="timeline">
 
-      <div class="job">
+      <div class="job reveal">
         <div class="job-head">
           <div class="job-role">IT Developer · <span class="co">F1RST Tecnologia</span></div>
           <div class="job-date">Jan 2022 – Jan 2026</div>
@@ -284,7 +343,7 @@
         </ul>
       </div>
 
-      <div class="job">
+      <div class="job reveal">
         <div class="job-head">
           <div class="job-role">Mid-Level Software Analyst · <span class="co">Accenture</span></div>
           <div class="job-date">Jun 2021 – Jan 2022</div>
@@ -297,7 +356,7 @@
         </ul>
       </div>
 
-      <div class="job">
+      <div class="job reveal">
         <div class="job-head">
           <div class="job-role">Junior Software Analyst · <span class="co">Engebras Tecnologia</span></div>
           <div class="job-date">Mar 2021 – Jun 2021</div>
@@ -310,7 +369,7 @@
         </ul>
       </div>
 
-      <div class="job">
+      <div class="job reveal">
         <div class="job-head">
           <div class="job-role">Junior Developer / Web Developer · <span class="co">Célebre Corretora</span></div>
           <div class="job-date">Jul 2019 – Feb 2021</div>
@@ -331,7 +390,7 @@
   <div class="wrap">
     <div class="eyebrow">Personal Project</div>
     <h2>Something I built on my own</h2>
-    <div class="project-card">
+    <div class="project-card reveal">
       <h3>AI Chatbot — SaaS</h3>
       <div class="project-sub">Backend / Full Stack Developer</div>
       <ul>
@@ -349,7 +408,7 @@
 
 <section id="contact">
   <div class="wrap">
-    <div class="contact-card">
+    <div class="contact-card reveal">
       <div class="eyebrow" style="justify-content:center;">Contact</div>
       <h2>Let's talk</h2>
       <p>Open to new opportunities on the Gold Coast and Brisbane area. Happy to chat about how I can help your team.</p>
@@ -368,6 +427,86 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // --- Scroll progress bar ---
+  var progressEl = document.getElementById('progress');
+  function updateProgress(){
+    var h = document.documentElement;
+    var scrolled = h.scrollTop;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (scrolled / max) * 100 : 0;
+    progressEl.style.width = pct + '%';
+  }
+  document.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // --- Scroll reveal, staggered per group ---
+  if (reduceMotion) {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
+  } else {
+    var groups = document.querySelectorAll('.about-grid > div, .skills-groups, .timeline, #contact .wrap');
+    groups.forEach(function(group){
+      var items = group.querySelectorAll(':scope > .reveal');
+      items.forEach(function(el, i){ el.style.transitionDelay = (i * 90) + 'ms'; });
+    });
+    // elements not inside one of those group wrappers (e.g. project-card)
+    document.querySelectorAll('.reveal').forEach(function(el){
+      if (!el.style.transitionDelay) el.style.transitionDelay = '0ms';
+    });
+
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+
+    // Safety net: never leave content permanently invisible (e.g. if a
+    // screenshot/crawler renders the full page without simulating scroll).
+    setTimeout(function(){
+      document.querySelectorAll('.reveal:not(.is-visible)').forEach(function(el){
+        el.classList.add('is-visible');
+      });
+    }, 2500);
+  }
+
+  // --- Hero cursor glow ---
+  var hero = document.getElementById('hero');
+  var glow = hero.querySelector('.hero-glow');
+  if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
+    hero.addEventListener('mousemove', function(e){
+      var rect = hero.getBoundingClientRect();
+      var x = ((e.clientX - rect.left) / rect.width) * 100;
+      var y = ((e.clientY - rect.top) / rect.height) * 100;
+      glow.style.setProperty('--mx', x + '%');
+      glow.style.setProperty('--my', y + '%');
+    });
+  }
+
+  // --- Animated stat counters ---
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (reduceMotion || !target){ el.textContent = target + suffix; return; }
+    var start = null, duration = 900;
+    function step(ts){
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    setTimeout(function(){ animateCount(el); }, 300);
+  });
 </script>
 
 </body>
