@@ -1,513 +1,594 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fernando Costa — Software Developer</title>
-<meta name="description" content="Fernando Costa — Software Developer with 6+ years of experience in front end, back end and process automation. Based in Gold Coast, Queensland, Australia.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fernando Costa</title>
+<meta name="description" content="Fernando Costa — full-stack developer (Angular, Node.js, Java). Six years building banking apps in São Paulo, now based on the Gold Coast, Queensland.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#0b0f14;
-    --bg-alt:#101720;
-    --surface:#141c26;
-    --surface-hover:#182231;
-    --border:#232d3a;
-    --text:#e8edf3;
-    --text-dim:#9fb0c3;
-    --text-faint:#65758a;
-    --accent:#4fd1c5;
-    --accent-soft:rgba(79,209,197,0.12);
-    --accent-strong:#7fe3d9;
-    --radius:14px;
-    --maxw:960px;
-  }
-  @media (prefers-color-scheme: light){
-    :root{
-      --bg:#f7f9fb;
-      --bg-alt:#eef2f5;
-      --surface:#ffffff;
-      --surface-hover:#f2f6f8;
-      --border:#e1e7ec;
-      --text:#151b23;
-      --text-dim:#4a5a6b;
-      --text-faint:#8494a6;
-      --accent:#0f9c8f;
-      --accent-soft:rgba(15,156,143,0.10);
-      --accent-strong:#0c7d73;
-    }
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;text-decoration:none;}
-  section{padding:88px 24px;}
-  .wrap{max-width:var(--maxw);margin:0 auto;}
-  h1,h2,h3{line-height:1.2;margin:0;}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:8px;
-    font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-    color:var(--accent);margin-bottom:14px;
-  }
-  .eyebrow::before{content:"";width:20px;height:2px;background:var(--accent);border-radius:2px;}
-  section h2{font-size:clamp(24px,3.4vw,32px);font-weight:700;margin-bottom:36px;}
+:root{
+  --ground:#EFF0EC; --ground-2:#E3E5DF; --ink:#0B0F0E; --ink-2:#4A524F;
+  --accent:#00C566; --accent-ink:#04140B;
+  --night:#0B0F0E; --night-2:#141A18; --night-3:#1D2522; --night-ink:#EEF2EE; --night-dim:#97A39E;
+  --code-key:#7FE0A8; --code-str:#F2D46B; --code-com:#6F7B76; --code-pun:#B9C4BF;
+  --margin:clamp(16px,3vw,40px); --gap:clamp(120px,14vw,200px);
+  --ease:cubic-bezier(.2,.7,.1,1);
+  --sans:"Archivo",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--ground:#0E1312;--ground-2:#18201D;--ink:#EEF2EE;--ink-2:#A5B0AB;--night:#050807;--night-2:#111715;--night-3:#1A2220}
+}
+:root[data-theme="dark"]{--ground:#0E1312;--ground-2:#18201D;--ink:#EEF2EE;--ink-2:#A5B0AB;--night:#050807;--night-2:#111715;--night-3:#1A2220}
 
-  /* NAV */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:color-mix(in srgb, var(--bg) 82%, transparent);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--border);
-  }
-  nav{
-    max-width:var(--maxw);margin:0 auto;padding:16px 24px;
-    display:flex;align-items:center;justify-content:space-between;
-  }
-  .logo{font-weight:700;font-size:16px;letter-spacing:-0.01em;}
-  .logo span{color:var(--accent);}
-  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--text-dim);}
-  .nav-links a{transition:color .15s;}
-  .nav-links a:hover{color:var(--text);}
-  @media (max-width:640px){ .nav-links{display:none;} }
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.55;font-variation-settings:"wdth" 100;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{padding-inline:var(--margin);max-width:1520px;margin-inline:auto}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.035em;line-height:.95;font-variation-settings:"wdth" 112}
+h2{font-size:clamp(40px,6.2vw,96px)}
+h3{font-size:clamp(24px,2.2vw,32px);letter-spacing:-.02em;line-height:1.1}
+p{margin:0}
+pre,code{font-family:var(--mono)}
 
-  /* HERO */
-  .hero{padding:120px 24px 90px;position:relative;overflow:hidden;}
-  .hero::before{
-    content:"";position:absolute;inset:0;
-    background:radial-gradient(600px 300px at 15% 0%, var(--accent-soft), transparent 70%);
-    pointer-events:none;
-  }
-  .hero .wrap{position:relative;}
-  .hero .kicker{color:var(--text-faint);font-size:15px;margin-bottom:18px;}
-  .hero h1{font-size:clamp(34px,6vw,56px);font-weight:800;letter-spacing:-0.02em;}
-  .hero h1 .accent{color:var(--accent);}
-  .hero p.lede{
-    margin-top:22px;max-width:640px;font-size:18px;color:var(--text-dim);
-  }
-  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:12px 22px;border-radius:999px;font-size:14px;font-weight:600;
-    border:1px solid var(--border);transition:all .15s;
-  }
-  .btn-primary{background:var(--accent);color:#04211d;border-color:var(--accent);}
-  .btn-primary:hover{background:var(--accent-strong);}
-  .btn-ghost{color:var(--text);}
-  .btn-ghost:hover{background:var(--surface-hover);border-color:var(--text-faint);}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.6em;padding:16px 26px;font:600 17px/1 var(--sans);text-decoration:none;border:0;cursor:pointer;background:var(--ink);color:var(--ground);transition:transform .25s var(--ease),background .2s}
+.btn:hover{transform:translateY(-3px)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn--accent{background:var(--accent);color:var(--accent-ink)}
+.btn--ghost{background:var(--ground-2);color:var(--ink)}
+.btn .arr{display:inline-block;transition:transform .25s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.link{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 2px no-repeat;transition:background-size .3s var(--ease)}
+.link:hover{background-size:100% 2px}
 
-  .stat-row{display:flex;gap:40px;margin-top:56px;flex-wrap:wrap;}
-  .stat b{display:block;font-size:26px;font-weight:800;color:var(--text);}
-  .stat span{font-size:13px;color:var(--text-faint);}
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:var(--ground);transition:transform .35s var(--ease)}
+.nav.hide{transform:translateY(-100%)}
+.nav .wrap{display:flex;align-items:center;gap:32px;height:72px}
+.wordmark{font-weight:800;font-size:20px;letter-spacing:-.03em;text-decoration:none;font-variation-settings:"wdth" 112;margin-right:auto}
+.nav nav{display:flex;gap:28px;font-size:16px}
+.nav .btn{padding:12px 18px;font-size:15px}
+@media (max-width:760px){.nav nav{display:none}}
 
-  /* ABOUT */
-  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;}
-  @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} }
-  .about-grid p{color:var(--text-dim);font-size:16px;}
-  .fact-card{
-    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-    padding:22px 24px;
-  }
-  .fact-card + .fact-card{margin-top:14px;}
-  .fact-card b{display:block;font-size:13px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
-  .fact-card div.val{font-size:15px;}
+/* hero */
+.hero{padding-top:clamp(32px,6vw,88px);padding-bottom:clamp(64px,8vw,120px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,4vw,64px);align-items:end}
+.hero h1{font-size:clamp(60px,10vw,156px);line-height:.86;letter-spacing:-.05em;font-variation-settings:"wdth" 108}
+.hero h1 .ln{display:block;white-space:nowrap}
+.hero h1 .ch{display:inline-block}
+.hero .lede{font-size:clamp(20px,1.8vw,26px);line-height:1.35;max-width:34ch;margin-top:40px;font-weight:450}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.clock{margin-top:36px;display:flex;flex-wrap:wrap;gap:8px 28px;font-size:16px;color:var(--ink-2)}
+.clock b{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
+.clock .dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.25}}
 
-  /* SKILLS */
-  .skills-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
-  .skill-group{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;}
-  .skill-group h3{font-size:14px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;}
-  .tag-list{display:flex;flex-wrap:wrap;gap:8px;}
-  .tag{
-    font-size:13px;padding:6px 12px;border-radius:8px;
-    background:var(--accent-soft);color:var(--accent-strong);font-weight:600;
-  }
+.term{background:var(--night);color:var(--night-ink);padding:22px 24px 26px;align-self:stretch;display:flex;flex-direction:column}
+.term-top{display:flex;justify-content:space-between;font-size:14px;color:var(--night-dim);margin-bottom:18px}
+.term-top span:first-child::before{content:"";display:inline-block;width:10px;height:10px;background:var(--accent);margin-right:10px}
+.term pre{margin:0;font-size:clamp(13px,1.02vw,15px);line-height:1.7;white-space:pre-wrap;flex:1}
+.k{color:var(--code-key)}.s{color:var(--code-str)}.c{color:var(--code-com)}.p{color:var(--code-pun)}
+.typing .tc{opacity:0}
+.typing .tc.on{opacity:1}
+.caret{position:relative}
+.caret::after{content:"";position:absolute;left:100%;top:.15em;width:.6em;height:1.15em;background:var(--accent);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (max-width:960px){.hero-grid{grid-template-columns:1fr}.term{min-height:0}.hero h1{font-size:clamp(60px,19vw,172px)}.hero .lede{max-width:34ch}}
 
-  /* EXPERIENCE */
-  .timeline{position:relative;padding-left:28px;border-left:2px solid var(--border);}
-  .job{position:relative;padding-bottom:44px;}
-  .job:last-child{padding-bottom:0;}
-  .job::before{
-    content:"";position:absolute;left:-35px;top:4px;width:12px;height:12px;
-    border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg);
-  }
-  .job-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline;}
-  .job-role{font-size:18px;font-weight:700;}
-  .job-role .co{color:var(--accent);font-weight:700;}
-  .job-date{font-size:13px;color:var(--text-faint);white-space:nowrap;}
-  .job-loc{font-size:13px;color:var(--text-faint);margin-top:2px;}
-  .job ul{margin:14px 0 0;padding-left:20px;color:var(--text-dim);font-size:15px;}
-  .job li{margin-bottom:6px;}
+/* journey */
+.journey{display:grid;grid-template-columns:5fr 7fr;gap:clamp(12px,1.5vw,20px);margin-bottom:24px}
+.journey figure{margin:0}.journey .ph{overflow:hidden;background:var(--ground-2)}
+.journey img{width:100%;height:clamp(320px,42vw,620px);object-fit:cover;transform:scale(1.12);will-change:transform}
+.journey-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:40px;flex-wrap:wrap}
+.journey-head p{max-width:36ch;font-size:18px}
+figcaption{font-size:15px;color:var(--ink-2);margin-top:10px}
+.route{display:flex;align-items:center;gap:16px;margin-top:28px;font-weight:700;font-size:clamp(18px,1.6vw,22px)}
+.route .track{flex:1;height:6px;background:var(--ground-2);position:relative;overflow:hidden}
+.route .track i{position:absolute;inset:0;background:var(--accent);transform-origin:left;transform:scaleX(var(--p,0))}
+.route .plane{font-weight:400;color:var(--ink-2);font-size:16px}
+@media (max-width:760px){.journey{grid-template-columns:1fr}.journey img{height:300px}}
 
-  /* PROJECT */
-  .project-card{
-    background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
-    padding:30px;
-  }
-  .project-card h3{font-size:20px;margin-bottom:6px;}
-  .project-sub{color:var(--accent);font-size:13px;font-weight:600;letter-spacing:.03em;margin-bottom:16px;}
-  .project-card ul{margin:0;padding-left:20px;color:var(--text-dim);font-size:15px;}
-  .project-card li{margin-bottom:8px;}
-  .project-tags{margin-top:18px;}
+/* stack */
+.stack{padding-top:var(--gap)}
+.marquee{overflow:hidden;margin:56px 0 0;user-select:none}
+.marquee .row{display:flex;gap:.5em;white-space:nowrap;font-size:clamp(48px,7.4vw,120px);font-weight:800;letter-spacing:-.04em;line-height:1.08;will-change:transform;font-variation-settings:"wdth" 118}
+.marquee .row span{display:inline-flex;align-items:center;gap:.5em}
+.marquee .row span::after{content:"";width:.22em;height:.22em;background:var(--accent);display:inline-block}
+.marquee .row.alt{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.marquee .row.alt span::after{background:var(--ink)}
+.stack-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;margin-top:72px}
+.stack-cols h3{font-size:22px;margin-bottom:14px}
+.stack-cols ul{list-style:none;margin:0;padding:0;font-size:18px;line-height:1.9}
+.stack-cols li{transition:transform .25s var(--ease)}
+.stack-cols li:hover{transform:translateX(6px)}
+@media (max-width:860px){.stack-cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-  /* CONTACT */
-  .contact-card{
-    background:linear-gradient(135deg, var(--surface), var(--bg-alt));
-    border:1px solid var(--border);border-radius:var(--radius);
-    padding:44px;text-align:center;
-  }
-  .contact-card p{color:var(--text-dim);max-width:480px;margin:14px auto 28px;font-size:16px;}
-  .contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;}
+/* experience */
+.exp{padding-top:var(--gap)}
+.exp-grid{display:grid;grid-template-columns:4fr 8fr;gap:clamp(32px,5vw,96px);margin-top:64px}
+.exp-side{position:sticky;top:96px;align-self:start}
+.exp-side img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.exp-side .num{font-size:clamp(64px,7vw,110px);font-weight:800;letter-spacing:-.05em;line-height:.9;margin-top:28px;font-variation-settings:"wdth" 112}
+.exp-side .num + p{font-size:17px;color:var(--ink-2);margin-top:8px;max-width:28ch}
+.log{position:relative;padding-left:56px}
+.log .rail{position:absolute;left:12px;top:10px;bottom:10px;width:6px;background:var(--ground-2)}
+.log .rail i{position:absolute;inset:0;background:var(--accent);transform-origin:top;transform:scaleY(var(--p,0))}
+.job{position:relative;padding-bottom:88px}
+.job:last-child{padding-bottom:0}
+.job .node{position:absolute;left:-56px;top:6px;width:30px;height:30px;background:var(--ground);border:6px solid var(--ground-2);border-radius:50%;transition:border-color .4s,transform .4s var(--ease)}
+.job.on .node{border-color:var(--accent);transform:scale(1.12)}
+.job .when{font-size:16px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.job h3{font-size:clamp(28px,3vw,44px);letter-spacing:-.03em;margin:6px 0 4px}
+.job .role{font-size:19px;font-weight:600}
+.job ul{margin:18px 0 0;padding-left:1.1em;max-width:62ch}
+.job li{margin-bottom:8px}
+.job li::marker{color:var(--accent)}
+@media (max-width:860px){.exp-grid{grid-template-columns:1fr}.exp-side{position:static;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:end}.exp-side img{aspect-ratio:1}.exp-side .num{margin-top:0}}
 
-  footer{padding:32px 24px;text-align:center;color:var(--text-faint);font-size:13px;border-top:1px solid var(--border);}
+/* project */
+.project{background:var(--night);color:var(--night-ink);margin-top:var(--gap);padding:clamp(80px,10vw,140px) 0}
+.project h2{color:var(--night-ink)}
+.proj-head{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:end}
+.proj-head p{font-size:19px;color:var(--night-ink)}
+.proj-head .tags{margin-top:18px;color:var(--night-dim);font-size:16px}
+.lab{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:20px;margin-top:64px}
+.phone{background:var(--night-2);padding:18px;display:flex;flex-direction:column;min-height:560px}
+.phone-top{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--night-3)}
+.phone-top .av{width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:800}
+.phone-top b{display:block;font-size:16px}
+.phone-top small{color:var(--night-dim);font-size:13px}
+.chat{flex:1;display:flex;flex-direction:column;gap:10px;padding:16px 0;overflow-y:auto;max-height:380px}
+.msg{max-width:85%;padding:10px 14px;font-size:15px;line-height:1.4;border-radius:14px;animation:pop .35s var(--ease)}
+.msg.in{align-self:flex-end;background:#1F5C3D;border-bottom-right-radius:4px}
+.msg.out{align-self:flex-start;background:var(--night-3);border-bottom-left-radius:4px}
+.msg.typing{color:var(--night-dim)}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.96)}}
+.picks{display:flex;flex-direction:column;gap:8px}
+.picks button{font:500 15px/1.3 var(--sans);text-align:left;padding:12px 14px;background:var(--night-3);color:var(--night-ink);border:1px solid #2C3733;border-radius:12px;cursor:pointer;transition:transform .2s var(--ease),border-color .2s}
+.picks button:hover:not(:disabled){transform:translateX(4px);border-color:var(--accent)}
+.picks button:disabled{opacity:.4;cursor:default}
+.tenants{display:flex;gap:6px;margin-bottom:14px}
+.tenants button{flex:1;font:600 14px/1.2 var(--sans);padding:10px;background:transparent;color:var(--night-dim);border:1px solid #2C3733;border-radius:10px;cursor:pointer;transition:background .2s,color .2s}
+.tenants button[aria-pressed="true"]{background:var(--night-ink);color:var(--night);border-color:var(--night-ink)}
+.arch{background:var(--night-2);padding:20px;display:flex;flex-direction:column}
+.arch svg{width:100%;height:auto;flex:1}
+.arch .lbl{font:600 15px var(--sans);fill:var(--night-ink)}
+.arch .sub{font:400 12.5px var(--sans);fill:var(--night-dim)}
+.arch .port{fill:var(--night-3);stroke:#2C3733;stroke-width:1.5;transition:fill .3s,stroke .3s}
+.arch .port.hot{fill:#173D2A;stroke:var(--accent)}
+.arch .hex{fill:#111816;stroke:var(--accent);stroke-width:2}
+.arch .wire{stroke:#2C3733;stroke-width:2;fill:none;stroke-dasharray:6 6}
+.arch .pkt{fill:var(--accent)}
+.logs{margin:14px 0 0;background:var(--night);padding:14px 16px;font-size:12.5px;line-height:1.65;height:150px;overflow:hidden;color:var(--night-dim);white-space:pre-wrap}
+.logs .ok{color:var(--code-key)}.logs .t{color:var(--code-com)}.logs .y{color:var(--code-str)}
+.lab-note{margin-top:16px;color:var(--night-dim);font-size:15px}
+.proj-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:72px}
+.proj-points h3{font-size:24px;margin-bottom:10px;color:var(--night-ink)}
+.proj-points p{color:var(--night-ink);opacity:.86;font-size:17px}
+@media (max-width:960px){.proj-head,.lab,.proj-points{grid-template-columns:1fr}.phone{min-height:0}.chat{max-height:300px;min-height:200px}}
 
-  /* SCROLL PROGRESS BAR */
-  #progress{
-    position:fixed;top:0;left:0;height:3px;width:0%;
-    background:linear-gradient(90deg, var(--accent), var(--accent-strong));
-    z-index:100;transition:width .1s ease-out;
-  }
+/* about */
+.about{padding-top:var(--gap)}
+.about-grid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,4vw,64px);margin-top:56px;align-items:start}
+.about-photo{margin:0;overflow:hidden}
+.about-photo img{width:100%;aspect-ratio:3/2;object-fit:cover;transform:scale(1.08);will-change:transform}
+.about-text p{font-size:clamp(19px,1.5vw,22px);line-height:1.5}
+.about-text p + p{margin-top:20px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:20px}
+.fact{background:var(--ground-2);padding:24px}
+.fact b{display:block;font-size:clamp(40px,4vw,60px);line-height:1;letter-spacing:-.04em;font-weight:800;font-variation-settings:"wdth" 112;font-variant-numeric:tabular-nums}
+.fact span{display:block;margin-top:10px;font-size:16px}
+.about-more{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:56px}
+.about-more h3{font-size:20px;margin-bottom:6px}
+.about-more p{font-size:17px}
+.small-photo{margin:28px 0 0}
+.small-photo img{width:100%;aspect-ratio:16/10;object-fit:cover}
+@media (max-width:860px){.about-grid,.about-more{grid-template-columns:1fr}.facts{grid-template-columns:1fr 1fr 1fr}.fact{padding:16px}}
 
-  /* SCROLL REVEAL */
-  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease;}
-  .reveal.is-visible{opacity:1;transform:translateY(0);}
+/* contact */
+.contact{background:var(--accent);color:var(--accent-ink);margin-top:var(--gap);padding:clamp(80px,10vw,140px) 0 0;overflow:hidden}
+.contact-grid{display:grid;grid-template-columns:7fr 5fr;gap:48px;align-items:end}
+.contact h2{color:var(--accent-ink)}
+.contact .lede{font-size:clamp(19px,1.6vw,23px);max-width:34ch;margin-top:24px}
+.mail{display:inline-block;margin-top:40px;font-size:clamp(26px,3.6vw,54px);font-weight:800;letter-spacing:-.03em;text-decoration:none;word-break:break-all;line-height:1.05}
+.contact .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.contact .btn{background:var(--accent-ink);color:var(--accent)}
+.contact .btn--ghost{background:transparent;color:var(--accent-ink);box-shadow:inset 0 0 0 2px var(--accent-ink)}
+.contact figure{margin:0}
+.contact figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.contact figcaption{color:var(--accent-ink)}
+.bigname{font-size:clamp(56px,15.2vw,236px);font-weight:900;letter-spacing:-.06em;line-height:.8;white-space:nowrap;margin-top:clamp(64px,8vw,120px);font-variation-settings:"wdth" 100;transform:translateY(.1em)}
+.bigname span{display:inline-block}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr}.contact figure img{aspect-ratio:16/10}}
+footer{padding:28px 0 40px;font-size:14px;color:var(--ink-2)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+footer details summary{cursor:pointer}
+footer ul{margin:10px 0 0;padding-left:1.1em;max-width:90ch}
+.copied{position:fixed;left:50%;bottom:28px;transform:translate(-50%,calc(100% + 60px));visibility:hidden;background:var(--ink);color:var(--ground);padding:12px 18px;font-size:15px;transition:transform .35s var(--ease);z-index:30}
+.copied.show{transform:translate(-50%,0);visibility:visible}
 
-  /* NAV underline */
-  .nav-links a{position:relative;padding-bottom:4px;}
-  .nav-links a::after{
-    content:"";position:absolute;left:0;bottom:0;width:0;height:2px;
-    background:var(--accent);transition:width .25s ease;
-  }
-  .nav-links a:hover::after{width:100%;}
-
-  /* CARD HOVER LIFT */
-  .fact-card,.skill-group,.project-card{transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;}
-  .fact-card:hover,.skill-group:hover,.project-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 12px 28px -14px rgba(0,0,0,.35);
-    border-color:var(--accent);
-  }
-
-  /* TAG HOVER */
-  .tag{transition:transform .15s ease, background .15s ease;}
-  .tag:hover{transform:translateY(-2px) scale(1.04);background:var(--accent);color:var(--bg);}
-
-  /* BUTTON MICRO-INTERACTION */
-  .btn:hover{transform:translateY(-2px);}
-  .btn:active{transform:translateY(0) scale(.97);}
-
-  /* TIMELINE PULSE */
-  .job::before{animation:pulse-dot 2.4s ease-in-out infinite;}
-  @keyframes pulse-dot{
-    0%,100%{box-shadow:0 0 0 4px var(--bg), 0 0 0 4px var(--bg);}
-    50%{box-shadow:0 0 0 4px var(--bg), 0 0 0 9px var(--accent-soft);}
-  }
-
-  /* HERO CURSOR GLOW */
-  .hero-glow{
-    position:absolute;inset:0;pointer-events:none;
-    background:radial-gradient(360px 360px at var(--mx,50%) var(--my,20%), var(--accent-soft), transparent 70%);
-    transition:background .15s ease-out;
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    .reveal{opacity:1!important;transform:none!important;transition:none!important;}
-    .job::before{animation:none!important;}
-    .btn,.fact-card,.skill-group,.project-card,.tag{transition:none!important;}
-  }
+/* reveal */
+.js [data-r]{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0ms)}
+.js [data-r].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js [data-r]{opacity:1;transform:none}
+  .journey img,.about-photo img{transform:none!important}
+}
 </style>
 </head>
 <body>
-
-<div id="progress"></div>
-
-<header>
-  <nav>
-    <div class="logo">Fernando<span>.</span>Costa</div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
-      <a href="#project">Project</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <a class="btn btn-ghost" href="mailto:costasfernando199@gmail.com" style="padding:8px 16px;">Contact</a>
-  </nav>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="wordmark" href="#top">Fernando Costa</a>
+    <nav aria-label="Sections">
+      <a class="link" href="#stack">Stack</a>
+      <a class="link" href="#experience">Experience</a>
+      <a class="link" href="#project">Project</a>
+      <a class="link" href="#about">About</a>
+    </nav>
+    <a class="btn btn--accent" href="#contact">Contact</a>
+  </div>
 </header>
 
-<section class="hero" id="hero">
-  <div class="hero-glow"></div>
-  <div class="wrap">
-    <div class="kicker">Gold Coast, Queensland, Australia</div>
-    <h1>Fernando Costa<br>Software Developer, <span class="accent">Full Stack</span></h1>
-    <p class="lede">
-      6+ years building web applications, back-end systems and process automation with Angular, React, Node.js, Java and Spring Boot.
-      Now based in Australia and open to new opportunities to bring that experience to a local team.
-    </p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="mailto:costasfernando199@gmail.com">Get in touch</a>
-      <a class="btn btn-ghost" href="https://linkedin.com/in/costa-fernando" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="btn btn-ghost" href="#experience">See experience ↓</a>
-    </div>
-    <div class="stat-row">
-      <div class="stat"><b data-count="6" data-suffix="+">0</b><span>Years of experience</span></div>
-      <div class="stat"><b data-count="4" data-suffix="">0</b><span>Companies, incl. Accenture</span></div>
-      <div class="stat"><b>Angular · Node.js · Java</b><span>Core stack</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="wrap">
-    <div class="eyebrow">About</div>
-    <h2>Who I am</h2>
-    <div class="about-grid">
-      <p>
-        Software Developer with 6+ years of experience across front end, back end, and process automation, using Angular,
-        React fundamentals, Node.js, Java, and Spring Boot. Comfortable picking up new tools and adapting to a small team's
-        needs — from building websites and internal tools, to automating manual workflows and providing general IT/tech
-        support. I recently relocated to the Gold Coast / Brisbane area, where I'm building local experience and continuing
-        to strengthen my English, while bringing 6+ years of hands-on technical expertise to the table.
-      </p>
+<main id="top">
+  <section class="hero wrap" aria-labelledby="h-name">
+    <div class="hero-grid">
       <div>
-        <div class="fact-card reveal"><b>Location</b><div class="val">Gold Coast, QLD, Australia</div></div>
-        <div class="fact-card reveal"><b>English</b><div class="val">Intermediate — actively studying, comfortable with technical written English</div></div>
-        <div class="fact-card reveal"><b>Open to</b><div class="val">New opportunities in Australia — full-time, contract, or trial</div></div>
+        <h1 id="h-name"><span class="ln">Fernando</span><span class="ln">Costa</span></h1>
+        <p class="lede" data-r>Full-stack developer. Six years building banking apps in São Paulo, now on the Gold Coast and open to work.</p>
+        <div class="actions" data-r style="--d:80ms">
+          <a class="btn" href="mailto:costasfernando199@gmail.com?subject=Hi%20Fernando">Email me <span class="arr">→</span></a>
+          <a class="btn btn--ghost" href="https://linkedin.com/in/costa-fernando" target="_blank" rel="noopener">LinkedIn <span class="arr">↗</span></a>
+        </div>
+        <p class="clock" data-r style="--d:160ms" aria-live="off">
+          <span><span class="dot"></span>Gold Coast <b id="t-gc">—</b></span>
+          <span>São Paulo <b id="t-sp">—</b></span>
+        </p>
+      </div>
+      <div class="term" data-r style="--d:120ms">
+        <div class="term-top"><span>fernando.ts</span><span>TypeScript</span></div>
+<pre id="code"><code><span class="k">export const</span> fernando <span class="p">= {</span>
+  role<span class="p">:</span> <span class="s">'Full-stack developer'</span><span class="p">,</span>
+  based<span class="p">:</span> <span class="s">'Gold Coast, QLD'</span><span class="p">,</span>
+  experience<span class="p">:</span> <span class="s">'6+ years'</span><span class="p">,</span>
+  frontEnd<span class="p">: [</span><span class="s">'Angular'</span><span class="p">,</span> <span class="s">'TypeScript'</span><span class="p">,</span> <span class="s">'React'</span><span class="p">],</span>
+  backEnd<span class="p">: [</span><span class="s">'Node.js'</span><span class="p">,</span> <span class="s">'NestJS'</span><span class="p">,</span> <span class="s">'Java'</span><span class="p">,</span> <span class="s">'Spring Boot'</span><span class="p">],</span>
+  data<span class="p">: [</span><span class="s">'PostgreSQL'</span><span class="p">,</span> <span class="s">'MySQL'</span><span class="p">,</span> <span class="s">'Redis'</span><span class="p">,</span> <span class="s">'MongoDB'</span><span class="p">],</span>
+  ships<span class="p">: [</span><span class="s">'Docker'</span><span class="p">,</span> <span class="s">'AWS'</span><span class="p">,</span> <span class="s">'GitHub Actions'</span><span class="p">],</span>
+  openTo<span class="p">: [</span><span class="s">'full-time'</span><span class="p">,</span> <span class="s">'contract'</span><span class="p">,</span> <span class="s">'trial'</span><span class="p">],</span>
+<span class="p">};</span>
+
+<span class="c">// npm run hire → costasfernando199@gmail.com</span></code></pre>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="skills" style="background:var(--bg-alt);">
-  <div class="wrap">
-    <div class="eyebrow">Skills</div>
-    <h2>What I work with</h2>
-    <div class="skills-groups">
-      <div class="skill-group reveal">
-        <h3>Front End</h3>
-        <div class="tag-list">
-          <span class="tag">JavaScript</span><span class="tag">TypeScript</span>
-          <span class="tag">Angular</span><span class="tag">React (fundamentals)</span>
+  <section class="wrap" aria-labelledby="h-journey">
+    <div class="journey-head">
+      <h2 id="h-journey" data-r>From Paulista to Surfers&nbsp;Paradise</h2>
+      <p data-r style="--d:80ms">Four teams and six years of banking, insurance and traffic systems in São Paulo. In 2026 I moved to Queensland to bring that work to an Australian team.</p>
+    </div>
+    <div class="journey">
+      <figure><div class="ph"><img src="img/sp-reflection.jpg" alt="Clouds reflected in the glass facade of a tower on Avenida Paulista, São Paulo" data-par></div><figcaption>Avenida Paulista, São Paulo</figcaption></figure>
+      <figure><div class="ph"><img src="img/gc-skyline.jpg" alt="The Surfers Paradise skyline seen from the beach on a clear day" data-par></div><figcaption>Surfers Paradise, Gold Coast</figcaption></figure>
+    </div>
+    <div class="route" id="route" aria-hidden="true"><span>GRU</span><span class="track"><i></i></span><span>OOL</span><span class="plane">14,000 km</span></div>
+  </section>
+
+  <section class="stack" id="stack" aria-labelledby="h-stack">
+    <div class="wrap"><h2 id="h-stack" data-r>The tools I ship with</h2></div>
+    <div class="marquee" aria-hidden="true">
+      <div class="row" data-dir="1"><span>Angular</span><span>TypeScript</span><span>Node.js</span><span>NestJS</span><span>Java</span><span>Spring Boot</span><span>Angular</span><span>TypeScript</span><span>Node.js</span><span>NestJS</span><span>Java</span><span>Spring Boot</span></div>
+      <div class="row alt" data-dir="-1"><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>AWS</span><span>MongoDB</span><span>React</span><span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>AWS</span><span>MongoDB</span><span>React</span></div>
+    </div>
+    <div class="wrap stack-cols">
+      <div data-r><h3>Front end</h3><ul><li>Angular</li><li>TypeScript</li><li>JavaScript</li><li>React (fundamentals)</li></ul></div>
+      <div data-r style="--d:70ms"><h3>Back end</h3><ul><li>Node.js</li><li>NestJS</li><li>Java</li><li>Spring Boot</li><li>REST APIs</li></ul></div>
+      <div data-r style="--d:140ms"><h3>Data and delivery</h3><ul><li>PostgreSQL, MySQL</li><li>Redis, MongoDB</li><li>Docker, AWS</li><li>Git, GitHub Actions</li></ul></div>
+      <div data-r style="--d:210ms"><h3>Also</h3><ul><li>Process automation</li><li>WordPress and PHP</li><li>IT support</li><li>Clean and hexagonal architecture</li></ul></div>
+    </div>
+  </section>
+
+  <section class="exp wrap" id="experience" aria-labelledby="h-exp">
+    <h2 id="h-exp" data-r>Six years, four teams</h2>
+    <div class="exp-grid">
+      <aside class="exp-side" data-r>
+        <img src="img/sp-paulista.jpg" alt="The repeating window grid of an office building on Avenida Paulista" loading="lazy">
+        <p class="num"><span data-count="6">6</span>+ yrs</p>
+        <p>Front end, back end and automation, mostly for banks and fintech in São Paulo.</p>
+      </aside>
+      <div class="log" id="log">
+        <div class="rail"><i></i></div>
+        <article class="job">
+          <span class="node"></span>
+          <p class="when">Jan 2022 – Jan 2026 · Hybrid, São Paulo</p>
+          <h3>F1RST Tecnologia</h3>
+          <p class="role">IT Developer</p>
+          <ul>
+            <li>Built banking applications with Angular on the front end and Java / Spring Boot behind it, built to scale.</li>
+            <li>Led V2 of the card application flow; the changes significantly raised the product’s conversion rate.</li>
+            <li>Maintained and evolved critical Run The Bank journeys, cutting failures and smoothing the experience.</li>
+            <li>Built a reusable error-screen library that kept teams consistent and cut rework.</li>
+            <li>Worked on internal pod auto-scaling and moved the architecture towards Clean Architecture.</li>
+          </ul>
+        </article>
+        <article class="job">
+          <span class="node"></span>
+          <p class="when">Jun 2021 – Jan 2022 · São Paulo</p>
+          <h3>Accenture</h3>
+          <p class="role">Mid-Level Software Analyst</p>
+          <ul>
+            <li>Built Angular front ends with a focus on performance, usability and UX.</li>
+            <li>Found and fixed bottlenecks in a card application journey, improving conversion.</li>
+            <li>Integrated modern banking APIs with secure, efficient communication between systems.</li>
+          </ul>
+        </article>
+        <article class="job">
+          <span class="node"></span>
+          <p class="when">Mar 2021 – Jun 2021 · São Paulo</p>
+          <h3>Engebras Tecnologia</h3>
+          <p class="role">Junior Software Analyst</p>
+          <ul>
+            <li>Built Angular interfaces for a traffic-fine management system.</li>
+            <li>Fixed bugs and tuned performance for a more stable system.</li>
+            <li>Connected the app to image-processing services and supported the Node.js back end.</li>
+          </ul>
+        </article>
+        <article class="job">
+          <span class="node"></span>
+          <p class="when">Jul 2019 – Feb 2021 · São Paulo</p>
+          <h3>Célebre Corretora</h3>
+          <p class="role">Junior Developer / Web Developer</p>
+          <ul>
+            <li>Built lead-generation web apps and interactive tools for health insurance providers.</li>
+            <li>Helped build an end-to-end contract management SaaS.</li>
+            <li>Rebuilt legacy WordPress systems and wrote REST/MVC apps in PHP with the Slim Framework.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="project" aria-labelledby="h-proj">
+    <div class="wrap">
+      <div class="proj-head">
+        <h2 id="h-proj" data-r>One WhatsApp bot, many businesses</h2>
+        <div data-r style="--d:80ms">
+          <p>My own multi-tenant SaaS: each business plugs in its WhatsApp number and gets automated customer service. Back end in Node.js and NestJS on a hexagonal architecture, with Redis holding each conversation’s context.</p>
+          <p class="tags">Node.js · NestJS · Redis · Docker · GitHub Actions · WhatsApp API</p>
         </div>
       </div>
-      <div class="skill-group reveal">
-        <h3>Back End</h3>
-        <div class="tag-list">
-          <span class="tag">Node.js</span><span class="tag">NestJS</span><span class="tag">Java</span>
-          <span class="tag">Spring Boot</span><span class="tag">REST APIs</span>
+
+      <div class="lab" data-ui>
+        <div class="phone" data-r>
+          <div class="tenants" role="group" aria-label="Choose a sample business">
+            <button type="button" data-tenant="surf" aria-pressed="true">Burleigh Surf School</button>
+            <button type="button" data-tenant="dental" aria-pressed="false">Clínica Paulista</button>
+          </div>
+          <div class="phone-top"><span class="av" id="av">B</span><div><b id="tname">Burleigh Surf School</b><small>WhatsApp Business · bot online</small></div></div>
+          <div class="chat" id="chat" aria-live="polite"></div>
+          <div class="picks" id="picks" aria-label="Send a message"></div>
+        </div>
+        <div class="arch" data-r style="--d:100ms">
+          <svg viewBox="0 0 640 380" role="img" aria-label="Hexagonal architecture: a WhatsApp webhook adapter feeds the domain core, which reads tenant config, keeps context in Redis, asks the AI model and replies through the WhatsApp send adapter.">
+            <path class="wire" d="M120 190 L250 190"/><path class="wire" d="M390 190 L520 190"/>
+            <path class="wire" d="M320 120 L320 62"/><path class="wire" d="M320 260 L320 318"/>
+            <path class="wire" d="M372 150 L470 92"/>
+            <polygon class="hex" points="320,110 389,150 389,230 320,270 251,230 251,150"/>
+            <text class="lbl" x="320" y="186" text-anchor="middle">Domain</text>
+            <text class="sub" x="320" y="206" text-anchor="middle">use cases</text>
+            <g data-n="in"><rect class="port" x="10" y="155" width="110" height="70" rx="8"/><text class="lbl" x="65" y="186" text-anchor="middle">Webhook</text><text class="sub" x="65" y="205" text-anchor="middle">NestJS adapter</text></g>
+            <g data-n="out"><rect class="port" x="520" y="155" width="110" height="70" rx="8"/><text class="lbl" x="575" y="186" text-anchor="middle">Send</text><text class="sub" x="575" y="205" text-anchor="middle">WhatsApp API</text></g>
+            <g data-n="tenant"><rect class="port" x="250" y="6" width="140" height="56" rx="8"/><text class="lbl" x="320" y="31" text-anchor="middle">Tenant config</text><text class="sub" x="320" y="49" text-anchor="middle">PostgreSQL</text></g>
+            <g data-n="ai"><rect class="port" x="250" y="318" width="140" height="56" rx="8"/><text class="lbl" x="320" y="343" text-anchor="middle">AI model</text><text class="sub" x="320" y="361" text-anchor="middle">reply port</text></g>
+            <g data-n="redis"><rect class="port" x="470" y="58" width="140" height="56" rx="8"/><text class="lbl" x="540" y="83" text-anchor="middle">Context</text><text class="sub" x="540" y="101" text-anchor="middle">Redis</text></g>
+            <circle class="pkt" id="pkt" r="9" cx="0" cy="0" style="opacity:0"/>
+          </svg>
+<pre class="logs" id="logs" aria-live="off"><span class="t">// pick a message on the left to send it through the system</span></pre>
         </div>
       </div>
-      <div class="skill-group reveal">
-        <h3>Data & Tools</h3>
-        <div class="tag-list">
-          <span class="tag">MySQL</span><span class="tag">PostgreSQL</span>
-          <span class="tag">Redis</span><span class="tag">MongoDB</span>
-          <span class="tag">SQL</span><span class="tag">Git</span>
-          <span class="tag">Docker</span><span class="tag">AWS</span>
-        </div>
+      <p class="lab-note">A working sketch of the flow with two sample businesses. The replies here are scripted; the real bot builds them from each tenant’s own data.</p>
+
+      <div class="proj-points">
+        <div data-r><h3>Multi-tenant from day one</h3><p>Every business gets its own config, number and conversation space, resolved on each incoming message.</p></div>
+        <div data-r style="--d:80ms"><h3>Ports and adapters</h3><p>WhatsApp, Redis and the AI model sit behind ports, so any of them can be swapped without touching the domain.</p></div>
+        <div data-r style="--d:160ms"><h3>Shipped by a pipeline</h3><p>Docker images built and deployed by GitHub Actions on every merge, for releases nobody has to babysit.</p></div>
       </div>
-      <div class="skill-group reveal">
-        <h3>Other</h3>
-        <div class="tag-list">
-          <span class="tag">WordPress</span><span class="tag">PHP</span>
-          <span class="tag">Process Automation</span><span class="tag">IT Support</span>
+    </div>
+  </section>
+
+  <section class="about wrap" id="about" aria-labelledby="h-about">
+    <h2 id="h-about" data-r>Settling in on the Gold Coast</h2>
+    <div class="about-grid">
+      <figure class="about-photo" data-r><img src="img/gc-night.jpg" alt="The Gold Coast at dusk, towers lit along the Nerang River" loading="lazy" data-par></figure>
+      <div class="about-text">
+        <p data-r>I’ve spent six years across front end, back end and process automation. I’m happy picking up new tools and fitting a small team’s needs, from websites and internal tools to automating manual work and general IT support.</p>
+        <p data-r style="--d:80ms">I recently moved to the Gold Coast / Brisbane area. I’m building local experience and keep working on my English, while bringing six years of hands-on technical work with me.</p>
+        <div class="facts" data-r style="--d:160ms">
+          <div class="fact"><b data-count="6">6</b><span>years shipping</span></div>
+          <div class="fact"><b data-count="4">4</b><span>companies</span></div>
+          <div class="fact"><b data-count="3">3</b><span>languages: TS, Java, PHP</span></div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="wrap">
-    <div class="eyebrow">Experience</div>
-    <h2>Where I've worked</h2>
-    <div class="timeline">
-
-      <div class="job reveal">
-        <div class="job-head">
-          <div class="job-role">IT Developer · <span class="co">F1RST Tecnologia</span></div>
-          <div class="job-date">Jan 2022 – Jan 2026</div>
-        </div>
-        <div class="job-loc">Hybrid — São Paulo, Brazil</div>
-        <ul>
-          <li>Worked on banking applications using Angular (front end) and Java / Spring Boot (back end), ensuring scalability and high performance.</li>
-          <li>Led the evolution of the card application flow (V2), implementing improvements that significantly increased the product's conversion rate.</li>
-          <li>Performed corrective and evolutive maintenance on critical Run The Bank journeys, reducing failures and improving user experience.</li>
-          <li>Built a reusable library for standardizing error screens, increasing visual consistency and reducing rework across teams.</li>
-          <li>Contributed to internal pod auto-scaling solutions and evolved the application architecture using Clean Architecture principles.</li>
-        </ul>
-      </div>
-
-      <div class="job reveal">
-        <div class="job-head">
-          <div class="job-role">Mid-Level Software Analyst · <span class="co">Accenture</span></div>
-          <div class="job-date">Jun 2021 – Jan 2022</div>
-        </div>
-        <div class="job-loc">São Paulo, Brazil</div>
-        <ul>
-          <li>Developed front-end applications with Angular, focusing on performance, usability, and UX.</li>
-          <li>Optimized the card application journey, identifying bottlenecks and implementing improvements that positively impacted conversion.</li>
-          <li>Integrated modern banking-sector APIs, ensuring efficient and secure communication between systems.</li>
-        </ul>
-      </div>
-
-      <div class="job reveal">
-        <div class="job-head">
-          <div class="job-role">Junior Software Analyst · <span class="co">Engebras Tecnologia</span></div>
-          <div class="job-date">Mar 2021 – Jun 2021</div>
-        </div>
-        <div class="job-loc">São Paulo, Brazil</div>
-        <ul>
-          <li>Developed front-end interfaces in Angular for a traffic fine management system, ensuring usability and performance.</li>
-          <li>Fixed bugs and optimized performance, reducing errors and improving system stability.</li>
-          <li>Integrated the application with image processing services and supported Node.js back-end integration.</li>
-        </ul>
-      </div>
-
-      <div class="job reveal">
-        <div class="job-head">
-          <div class="job-role">Junior Developer / Web Developer · <span class="co">Célebre Corretora</span></div>
-          <div class="job-date">Jul 2019 – Feb 2021</div>
-        </div>
-        <div class="job-loc">São Paulo, Brazil</div>
-        <ul>
-          <li>Developed web applications focused on lead generation and interactive systems for health insurance providers.</li>
-          <li>Took part in developing an end-to-end contract management SaaS, ensuring greater process control and automation.</li>
-          <li>Rebuilt legacy WordPress-based systems and developed REST/MVC applications using PHP and the Slim Framework.</li>
-        </ul>
-      </div>
-
+    <div class="about-more">
+      <div data-r><h3>Based in</h3><p>Gold Coast, QLD. Happy to work on site anywhere from the Gold Coast to Brisbane.</p></div>
+      <div data-r style="--d:70ms"><h3>English</h3><p>Intermediate and studying. Comfortable with technical written English.</p></div>
+      <div data-r style="--d:140ms"><h3>Open to</h3><p>New roles in Australia: full-time, contract or a trial period.</p></div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="project" style="background:var(--bg-alt);">
-  <div class="wrap">
-    <div class="eyebrow">Personal Project</div>
-    <h2>Something I built on my own</h2>
-    <div class="project-card reveal">
-      <h3>AI Chatbot — SaaS</h3>
-      <div class="project-sub">Backend / Full Stack Developer</div>
-      <ul>
-        <li>Built an automated WhatsApp customer service system on a multi-tenant SaaS model.</li>
-        <li>Developed the backend with Node.js and NestJS using Hexagonal Architecture; implemented Redis for context management and performance.</li>
-        <li>Set up CI/CD with Docker and GitHub Actions to automate deployments and improve delivery reliability.</li>
-      </ul>
-      <div class="project-tags tag-list">
-        <span class="tag">Node.js</span><span class="tag">NestJS</span><span class="tag">Redis</span>
-        <span class="tag">Docker</span><span class="tag">GitHub Actions</span><span class="tag">WhatsApp API</span>
+  <section class="contact" id="contact" aria-labelledby="h-contact">
+    <div class="wrap contact-grid">
+      <div>
+        <h2 id="h-contact" data-r>Let’s build something</h2>
+        <p class="lede" data-r style="--d:80ms">Open to new work around the Gold Coast and Brisbane. Happy to chat about how I can help your team.</p>
+        <a class="mail link" href="mailto:costasfernando199@gmail.com" data-r style="--d:140ms">costasfernando199@gmail.com</a>
+        <div class="actions" data-r style="--d:200ms">
+          <button class="btn" type="button" id="copy">Copy email</button>
+          <a class="btn btn--ghost" href="tel:+61406214161">0406 214 161</a>
+          <a class="btn btn--ghost" href="https://linkedin.com/in/costa-fernando" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
       </div>
+      <figure data-r style="--d:120ms"><img src="img/surfers-paradise.jpg" alt="Surfers Paradise towers reflected in the wet sand at low tide" loading="lazy"><figcaption>Surfers Paradise beach at low tide</figcaption></figure>
     </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="contact-card reveal">
-      <div class="eyebrow" style="justify-content:center;">Contact</div>
-      <h2>Let's talk</h2>
-      <p>Open to new opportunities on the Gold Coast and Brisbane area. Happy to chat about how I can help your team.</p>
-      <div class="contact-links">
-        <a class="btn btn-primary" href="mailto:costasfernando199@gmail.com">costasfernando199@gmail.com</a>
-        <a class="btn btn-ghost" href="tel:+61406214161">0406 214 161</a>
-        <a class="btn btn-ghost" href="https://linkedin.com/in/costa-fernando" target="_blank" rel="noopener">LinkedIn ↗</a>
-      </div>
-    </div>
-  </div>
-</section>
+    <div class="wrap"><p class="bigname" id="bigname" aria-hidden="true">Fernando Costa</p></div>
+  </section>
+</main>
 
 <footer>
-  © <span id="year"></span> Fernando Costa — Built with care, hosted from the Gold Coast.
+  <div class="wrap">
+    <span>© 2026 Fernando Costa · Gold Coast, QLD</span>
+    <details>
+      <summary>Photo credits</summary>
+      <ul>
+        <li>“Reflection of Parque Cultural Paulista building in Avenida Paulista, Brazil” by Wilfredor, <a href="https://commons.wikimedia.org/wiki/File:Reflection_of_Parque_Cultural_Paulista_building_in_Avenida_Paulista,_Brazil.jpg">CC BY-SA 4.0</a></li>
+        <li>“Surfers Paradise skyline in August 2021, 01” by Kgbo, <a href="https://commons.wikimedia.org/wiki/File:Surfers_Paradise_skyline_in_August_2021,_01.jpg">CC BY-SA 4.0</a></li>
+        <li>“Building in Paulista Avenue 09” by Wilfredor, <a href="https://commons.wikimedia.org/wiki/File:Building_in_Paulista_Avenue_09.jpg">CC0</a></li>
+        <li>“Gold Coast Skyline at Night” by marty.vdh, <a href="https://commons.wikimedia.org/wiki/File:Gold-Coast-Skyline-at-Night.jpg">CC BY-SA 2.0</a></li>
+        <li>“Skylines of Surfers Paradise, Queensland, autumn 2023, 03” by Kgbo, <a href="https://commons.wikimedia.org/wiki/File:Skylines_of_Surfers_Paradise,_Queensland,_autumn_2023,_03.jpg">CC BY-SA 4.0</a></li>
+      </ul>
+    </details>
+  </div>
 </footer>
+<div class="copied" id="copied" role="status">Email copied</div>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+document.documentElement.classList.add('js');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* clocks */
+const fmt = tz => new Intl.DateTimeFormat('en-AU',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:tz});
+const gc = fmt('Australia/Brisbane'), sp = fmt('America/Sao_Paulo');
+function tick(){const d=new Date();document.getElementById('t-gc').textContent=gc.format(d);document.getElementById('t-sp').textContent=sp.format(d)}
+tick(); setInterval(tick,1000);
 
-  // --- Scroll progress bar ---
-  var progressEl = document.getElementById('progress');
-  function updateProgress(){
-    var h = document.documentElement;
-    var scrolled = h.scrollTop;
-    var max = h.scrollHeight - h.clientHeight;
-    var pct = max > 0 ? (scrolled / max) * 100 : 0;
-    progressEl.style.width = pct + '%';
-  }
-  document.addEventListener('scroll', updateProgress, { passive: true });
-  updateProgress();
-
-  // --- Scroll reveal, staggered per group ---
-  if (reduceMotion) {
-    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
-  } else {
-    var groups = document.querySelectorAll('.about-grid > div, .skills-groups, .timeline, #contact .wrap');
-    groups.forEach(function(group){
-      var items = group.querySelectorAll(':scope > .reveal');
-      items.forEach(function(el, i){ el.style.transitionDelay = (i * 90) + 'ms'; });
-    });
-    // elements not inside one of those group wrappers (e.g. project-card)
-    document.querySelectorAll('.reveal').forEach(function(el){
-      if (!el.style.transitionDelay) el.style.transitionDelay = '0ms';
-    });
-
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if (entry.isIntersecting){
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
-
-    // Safety net: never leave content permanently invisible (e.g. if a
-    // screenshot/crawler renders the full page without simulating scroll).
-    setTimeout(function(){
-      document.querySelectorAll('.reveal:not(.is-visible)').forEach(function(el){
-        el.classList.add('is-visible');
-      });
-    }, 2500);
-  }
-
-  // --- Hero cursor glow ---
-  var hero = document.getElementById('hero');
-  var glow = hero.querySelector('.hero-glow');
-  if (!reduceMotion && window.matchMedia('(hover: hover)').matches) {
-    hero.addEventListener('mousemove', function(e){
-      var rect = hero.getBoundingClientRect();
-      var x = ((e.clientX - rect.left) / rect.width) * 100;
-      var y = ((e.clientY - rect.top) / rect.height) * 100;
-      glow.style.setProperty('--mx', x + '%');
-      glow.style.setProperty('--my', y + '%');
-    });
-  }
-
-  // --- Animated stat counters ---
-  function animateCount(el){
-    var target = parseInt(el.getAttribute('data-count'), 10);
-    var suffix = el.getAttribute('data-suffix') || '';
-    if (reduceMotion || !target){ el.textContent = target + suffix; return; }
-    var start = null, duration = 900;
-    function step(ts){
-      if (!start) start = ts;
-      var progress = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * target) + suffix;
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  document.querySelectorAll('[data-count]').forEach(function(el){
-    setTimeout(function(){ animateCount(el); }, 300);
+/* name decode */
+(function(){
+  const h=document.getElementById('h-name'); const glyphs='01<>/{}[]=;:_#$*+';
+  h.querySelectorAll('.ln').forEach((ln,li)=>{
+    const word=ln.textContent; ln.textContent='';
+    [...word].forEach((c,i)=>{const s=document.createElement('span');s.className='ch';s.textContent=c;s.dataset.c=c;ln.appendChild(s)});
   });
-</script>
+  if(reduce) return;
+  const chars=[...h.querySelectorAll('.ch')];
+  chars.forEach((s,i)=>{
+    s.animate([{transform:'translateY(.35em)',opacity:0},{transform:'none',opacity:1}],{duration:700,delay:i*45,easing:'cubic-bezier(.2,.7,.1,1)',fill:'backwards'});
+    let n=0; const end=8+i*2;
+    const iv=setInterval(()=>{ s.textContent = ++n>=end ? s.dataset.c : glyphs[Math.random()*glyphs.length|0]; if(n>=end) clearInterval(iv)},45);
+  });
+})();
 
+/* typing code */
+(function(){
+  const pre=document.getElementById('code'); if(reduce) return;
+  const walker=document.createTreeWalker(pre,NodeFilter.SHOW_TEXT); const nodes=[]; while(walker.nextNode()) nodes.push(walker.currentNode);
+  const spans=[];
+  nodes.forEach(t=>{const frag=document.createDocumentFragment();[...t.textContent].forEach(c=>{const s=document.createElement('span');s.className='tc';s.textContent=c;frag.appendChild(s);spans.push(s)});t.replaceWith(frag)});
+  pre.classList.add('typing');
+  let i=0, prev=null;
+  setTimeout(function step(){
+    for(let k=0;k<2&&i<spans.length;k++){spans[i].classList.add('on'); prev&&prev.classList.remove('caret'); prev=spans[i]; if(spans[i].textContent!=='\n') prev.classList.add('caret'); i++}
+    if(i<spans.length) setTimeout(step, spans[i-1].textContent==='\n'?120:16);
+  },900);
+})();
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('[data-r]').forEach(el=>io.observe(el));
+
+/* counters */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,to=+el.dataset.count;if(reduce)return;let t0;const run=t=>{t0??=t;const p=Math.min(1,(t-t0)/1100);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(run)};el.textContent='0';requestAnimationFrame(run)}),{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+/* scroll-linked: parallax, rails, marquee, nav */
+const rows=[...document.querySelectorAll('.marquee .row')].map(r=>({el:r,dir:+r.dataset.dir,x:0}));
+const pars=[...document.querySelectorAll('[data-par]')];
+const route=document.getElementById('route'), log=document.getElementById('log'), jobs=[...log.querySelectorAll('.job')];
+const nav=document.getElementById('nav'), big=document.getElementById('bigname');
+let lastY=scrollY, vel=0;
+function frame(){
+  const y=scrollY, vh=innerHeight; vel=vel*.9+(y-lastY)*.1;
+  if(Math.abs(y-lastY)>4) nav.classList.toggle('hide', y>lastY && y>400);
+  lastY=y;
+  if(!reduce){
+    rows.forEach(r=>{const w=r.el.scrollWidth/2; r.x-=(0.6+Math.abs(vel)*.25)*r.dir; if(r.x<-w)r.x+=w; if(r.x>0)r.x-=w; r.el.style.transform=`translate3d(${r.x}px,0,0)`});
+    pars.forEach(img=>{const b=img.parentElement.getBoundingClientRect(); if(b.bottom<0||b.top>vh) return; const p=(b.top+b.height/2-vh/2)/vh; img.style.transform=`translate3d(0,${p*-40}px,0) scale(1.12)`});
+  }
+  const rb=route.getBoundingClientRect(); route.style.setProperty('--p',Math.max(0,Math.min(1,(vh-rb.top)/(vh*.6))));
+  const lb=log.getBoundingClientRect(); const lp=Math.max(0,Math.min(1,(vh*.55-lb.top)/lb.height)); log.style.setProperty('--p',lp);
+  jobs.forEach(j=>j.classList.toggle('on', j.getBoundingClientRect().top < vh*.55));
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+function fitBig(){big.style.fontSize='100px';const w=big.parentElement.clientWidth-parseFloat(getComputedStyle(big.parentElement).paddingLeft)*2;big.style.fontSize=(100*w/big.scrollWidth*0.99)+'px'}
+fitBig();addEventListener('resize',fitBig);document.fonts.ready.then(fitBig);
+if(!reduce){const bs=big.textContent;big.textContent='';[...bs].forEach((c,i)=>{const s=document.createElement('span');s.textContent=c===' '?' ':c;big.appendChild(s)});
+  const bio=new IntersectionObserver(es=>{if(!es[0].isIntersecting)return;bio.disconnect();[...big.children].forEach((s,i)=>s.animate([{transform:'translateY(100%)',opacity:0},{transform:'none',opacity:1}],{duration:900,delay:i*40,easing:'cubic-bezier(.2,.7,.1,1)',fill:'backwards'}))},{threshold:.3});bio.observe(big)}
+
+/* copy email */
+document.getElementById('copy').addEventListener('click',async()=>{const t=document.getElementById('copied');try{await navigator.clipboard.writeText('costasfernando199@gmail.com');t.textContent='Email copied'}catch{t.textContent='costasfernando199@gmail.com'}t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000)});
+
+/* the bot lab */
+(function(){
+  const T={
+    surf:{name:'Burleigh Surf School',av:'B',id:'burleigh-surf',script:[
+      {q:'Hi! Any lessons this Saturday?',a:'Yes! Saturday 7am and 9am at Burleigh. Two spots left at 9. Want me to hold one?',ctx:'intent=lesson day=sat'},
+      {q:'Hold the 9am for me, I’m Sam',a:'Done, Sam: Saturday 9am is yours. Boards and wetsuits are included.',ctx:'name=Sam slot=sat-0900'},
+      {q:'How much do I owe?',a:'A group lesson is $65, pay on the beach. See you Saturday, Sam!',ctx:'quote=65 status=booked'}]},
+    dental:{name:'Clínica Paulista',av:'C',id:'clinica-paulista',script:[
+      {q:'Olá, vocês atendem sábado?',a:'Atendemos sim, das 8h às 12h. Quer agendar um horário?',ctx:'lang=pt intent=agenda'},
+      {q:'Quero marcar uma limpeza',a:'Claro! Tenho sábado às 9h30 ou 10h15. Qual prefere?',ctx:'servico=limpeza'},
+      {q:'9h30, por favor',a:'Agendado: limpeza no sábado às 9h30. Mando um lembrete na sexta.',ctx:'slot=sab-0930 status=agendado'}]}
+  };
+  let tenant='surf', step=0, busy=false;
+  const chat=document.getElementById('chat'), picks=document.getElementById('picks'), logs=document.getElementById('logs'), pkt=document.getElementById('pkt');
+  const P={in:[120,190],core:[320,190],tenant:[320,62],redis:[470,92],ai:[320,318],out:[520,190]};
+  const port=n=>document.querySelector(`[data-n="${n}"] .port`);
+  const add=(cls,txt)=>{const m=document.createElement('div');m.className='msg '+cls;m.textContent=txt;chat.appendChild(m);chat.scrollTop=chat.scrollHeight;return m};
+  const ts=()=>new Date().toISOString().slice(11,23);
+  const say=(html)=>{logs.insertAdjacentHTML('beforeend','\n<span class="t">'+ts()+'</span> '+html);const lines=logs.innerHTML.split('\n');if(lines.length>8)logs.innerHTML=lines.slice(-8).join('\n')};
+  const wait=ms=>new Promise(r=>setTimeout(r,reduce?0:ms));
+  function move(a,b,ms){return new Promise(res=>{if(reduce){pkt.setAttribute('cx',b[0]);pkt.setAttribute('cy',b[1]);return res()}let t0;const f=t=>{t0??=t;const p=Math.min(1,(t-t0)/ms),e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;pkt.setAttribute('cx',a[0]+(b[0]-a[0])*e);pkt.setAttribute('cy',a[1]+(b[1]-a[1])*e);p<1?requestAnimationFrame(f):res()};requestAnimationFrame(f)})}
+  async function hop(n,from,ms=420){await move(from,P[n],ms);const el=port(n);el&&el.classList.add('hot');await wait(260);el&&el.classList.remove('hot')}
+  function render(){
+    const t=T[tenant]; document.getElementById('tname').textContent=t.name; document.getElementById('av').textContent=t.av;
+    picks.innerHTML='';
+    if(step>=t.script.length){const b=document.createElement('button');b.type='button';b.textContent='Start a new conversation ↺';b.onclick=()=>{step=0;chat.innerHTML='';say('<span class="y">DEL</span> ctx:'+t.id+':+614…');render()};picks.appendChild(b);return}
+    const b=document.createElement('button');b.type='button';b.textContent='Send: “'+t.script[step].q+'”';b.disabled=busy;b.onclick=send;picks.appendChild(b);
+  }
+  async function send(){
+    if(busy) return; busy=true; render();
+    const t=T[tenant], s=t.script[step];
+    add('in',s.q); pkt.style.opacity=1;
+    pkt.setAttribute('cx',0);pkt.setAttribute('cy',190);
+    say('<span class="ok">POST</span> /webhook/whatsapp 200');
+    await hop('in',[0,190],380);
+    say('tenant resolved → <span class="y">'+t.id+'</span>');
+    await move(P.in,P.core,380); await hop('tenant',P.core,360); await move(P.tenant,P.core,320);
+    say('<span class="ok">GET</span> ctx:'+t.id+':+614… ('+step+' turns)');
+    await hop('redis',P.core,380); await move(P.redis,P.core,320);
+    const typing=add('out typing','typing…');
+    say('reply port → AI model');
+    await hop('ai',P.core,380); await move(P.ai,P.core,320);
+    say('<span class="ok">SET</span> ctx '+s.ctx);
+    await hop('redis',P.core,340); await move(P.redis,P.core,300);
+    await hop('out',P.core,420);
+    say('<span class="ok">sent</span> → WhatsApp Cloud API');
+    typing.remove(); add('out',s.a); pkt.style.opacity=0;
+    step++; busy=false; render();
+  }
+  document.querySelectorAll('[data-tenant]').forEach(b=>b.addEventListener('click',()=>{if(busy)return;tenant=b.dataset.tenant;step=0;chat.innerHTML='';document.querySelectorAll('[data-tenant]').forEach(x=>x.setAttribute('aria-pressed',x===b));add('out',tenant==='surf'?'G’day! Ask me about lessons, times or prices.':'Olá! Posso ajudar com horários e agendamentos.');render()}));
+  add('out','G’day! Ask me about lessons, times or prices.'); render();
+})();
+</script>
 </body>
 </html>
